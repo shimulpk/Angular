@@ -1,22 +1,15 @@
 {
   "students": [
     {
-      "id": "1",
       "name": "Shimul",
       "email": "pk@gmail.com",
       "cell": "6778999",
-      "fee": 5000
-    },
-    {
-      "name": "sk",
-      "email": "sk@gmail.com",
-      "cell": "6778999",
-      "fee": 3000,
-      "id": "vmxcveU6brw"
+      "fee": 8000,
+      "id": "1"
     },
     {
       "id": "u-e_O3VHDhc"
     }
-  ]
-  
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
