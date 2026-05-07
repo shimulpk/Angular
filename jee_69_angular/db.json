@@ -6,9 +6,6 @@
       "cell": "6778999",
       "fee": 8000,
       "id": "1"
-    },
-    {
-      "id": "u-e_O3VHDhc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
