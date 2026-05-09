@@ -1,11 +1,47 @@
 {
   "students": [
     {
-      "name": "Shimul",
+      "name": "Shimul Pk",
       "email": "pk@gmail.com",
       "cell": "6778999",
-      "fee": 8000,
+      "fee": "70000",
       "id": "1"
+    },
+    {
+      "name": "sk ",
+      "email": "shimulpk61100@gmail.com",
+      "cell": "6778999",
+      "fee": "9000",
+      "id": "T3RFMEGK_-E"
+    },
+    {
+      "name": "Shimul Pk",
+      "email": "shimulpk61100@gmail.com",
+      "cell": "678",
+      "fee": "123445",
+      "id": "LGTuV9RLoQ0"
+    }
+  ],
+  "department": [
+    {
+      "id": "1",
+      "name": "English",
+      "email": "pk@gmail.com"
+    },
+    {
+      "id": "427NL7H6WPc",
+      "name": "MD IMRAN ALI",
+      "email": "shimulpk61100@gmail.com"
+    },
+    {
+      "id": "BmRqDkTeTlc",
+      "name": "",
+      "email": ""
+    },
+    {
+      "id": "AfJ8tnTy_Lc",
+      "name": "MD SHIMUL PRAMANIK",
+      "email": "shimulpk61100@gmail.com"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

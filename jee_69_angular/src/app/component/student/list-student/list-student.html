@@ -13,18 +13,22 @@
     </tr>
 </thead>
 <tbody>
-    <tr *ngFor = "let s of students">
-        <td>{{s.id}}</td>
-        <td>{{s.name}}</td>
-        <td>{{s.email}}</td>
-        <td>{{s.cell}}</td>
-        <td>{{s.fee}}</td>
-        <td>
-            <button class="btn btn-danger mx-3" (click)="remove(s.id!)">Delete</button>
-            <button class="btn btn-warning mx-3">Edit</button>
-        </td>
+     <tr *ngFor="let s of students">
 
-    </tr>
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.email}}</td>
+                <td>{{s.cell}}</td>
+                <td>{{s.fee}}</td>
+                <td>
+                    <button class="btn btn-danger mx-3" (click)="remove(s.id!)">Delete</button>
+                    <button class="btn btn-warning mx-3" [routerLink]="['edit/', s.id]" >Edit</button>
+
+                </td>
+
+
+
+            </tr>
 </tbody>
 </table>
 </div>

@@ -2,12 +2,14 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { StudentModel } from '../../../model/student.model';
 import { StudentService } from '../../../services/student.service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list-student',
-  imports: [CommonModule],
+  
+  imports: [CommonModule,RouterModule],
   templateUrl: './list-student.html',
-  styleUrl: './list-student.css',
+  styleUrl:  './list-student.css',
 })
 export class ListStudent implements OnInit{
 
@@ -16,12 +18,14 @@ export class ListStudent implements OnInit{
   constructor(
     private studentService: StudentService,
     private cdr: ChangeDetectorRef
+   
 
   ){}
   ngOnInit(): void {
    this.loadAllStudent();
-   console.log(this.students);
   }
+
+ 
 
 loadAllStudent(){
 
@@ -31,7 +35,7 @@ loadAllStudent(){
   next: (data) => {
 
     this.students=data;
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
     console.log(this.students);
   },
 
@@ -54,8 +58,8 @@ this.studentService.deleteStudents(id).subscribe(
 },
 
 error: (err) =>{
-  console.log("err");
-},
+  console.log(err);
+}
   }
 
 );

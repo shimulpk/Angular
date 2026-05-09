@@ -38,4 +38,9 @@ deleteStudents(id: string):Observable<void>{
   return this.http.delete<void>(this.baseapi + '/' + id);
 }
 
+getById(id: string): Observable<StudentModel>{
+return this.http.get<StudentModel>(this.baseapi + '/' + id);
+
+}
+
 }

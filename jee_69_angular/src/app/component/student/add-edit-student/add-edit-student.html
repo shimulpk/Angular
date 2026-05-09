@@ -1,1 +1,23 @@
-<p>add-edit-student works!</p>
+<div class="container mt-4">
+  <h3>{{ isEditMode ? 'Edit Student' : 'Add New Student' }}</h3>
+  <form (ngSubmit)="save()" #studentForm="ngForm">
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" class="form-control" [(ngModel)]="student.name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" class="form-control" [(ngModel)]="student.email" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label>Cell</label>
+      <input type="text" class="form-control" [(ngModel)]="student.cell" name="cell" required>
+    </div>
+    <div class="mb-3">
+      <label>FeeO</label>
+      <input type="text" class="form-control" [(ngModel)]="student.fee" name="fee" required>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!studentForm.valid">Save</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="goBack()">Cancel</button>
+  </form>
+</div>
