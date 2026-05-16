@@ -3,49 +3,34 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { Production } from '../../shared/model';
+import { Production, ProductionStage } from '../../shared/model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductionService {
 
-  private apiUrl = environment.apiUrl + 'productions';
+ private apiUrl = environment.apiUrl + 'productions';
 
-  constructor(private http: HttpClient, private cdr:ChangeDetectorRef) {}
+  constructor(private http: HttpClient) {}
 
-  // GET ALL PRODUCTIONS
-  getAllProductions(): Observable<Production[]> {
+  getAllProductions() {
     return this.http.get<Production[]>(this.apiUrl);
-    this.cdr.detectChanges;
   }
 
-  // GET PRODUCTION BY ID
-  getProductionById(id: string): Observable<Production> {
+  getById(id: string) {
     return this.http.get<Production>(`${this.apiUrl}/${id}`);
-     this.cdr.detectChanges;
   }
 
-  // CREATE PRODUCTION
-  addProduction(production: Production): Observable<Production> {
-    return this.http.post<Production>(this.apiUrl, production);
+  addProduction(data: Production) {
+    return this.http.post(this.apiUrl, data);
   }
 
-  // UPDATE PRODUCTION
-  updateProduction(
-    id: string,
-    production: Production
-  ): Observable<Production> {
-
-    return this.http.put<Production>(
-      `${this.apiUrl}/${id}`,
-      production
-    );
-
+  updateProduction(id: string, data: Production) {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
   }
 
-  // DELETE PRODUCTION
-  deleteProduction(id: string): Observable<any> {
+  deleteProduction(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 

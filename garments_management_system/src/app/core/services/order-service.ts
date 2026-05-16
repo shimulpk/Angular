@@ -39,4 +39,10 @@ export class OrderService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  getOrdersByStatus(status: string) {
+  return this.http.get<Order[]>(
+    `${this.apiUrl}?status=${status}`
+  );
+}
+
 }

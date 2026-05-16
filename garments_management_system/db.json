@@ -125,6 +125,18 @@
       "shipmentDate": "2026-05-21",
       "status": "Completed",
       "id": "RX3iqDD1EWg"
+    },
+    {
+      "poNumber": "305",
+      "buyerId": "xZ-iF_uqxPU",
+      "styleId": "_gOi9cMf8FE",
+      "quantity": 100,
+      "unitPrice": 120,
+      "shipmentDate": "2026-05-20",
+      "status": "Completed",
+      "id": "tINM4UFg654",
+      "buyerName": "Nacano International Company",
+      "styleName": "203"
     }
   ],
   "bom": [
@@ -154,11 +166,58 @@
       "consumption": 1200,
       "wastage": 50,
       "uom": "Piece"
+    },
+    {
+      "id": "Krt4p8nvBCs",
+      "styleId": "_gOi9cMf8FE",
+      "materialName": "Fabric",
+      "category": "Accessories",
+      "consumption": 120,
+      "wastage": 5,
+      "uom": "Meter"
     }
   ],
-  "productions": [],
+  "productions": [
+    {
+      "orderId": "ORD-101",
+      "styleId": "STL-202",
+      "lineName": "Line-A",
+      "plannedStart": "2026-05-16T10:59:42.243Z",
+      "completedEnd": "2026-05-16T10:59:42.243Z",
+      "stages": [
+        {
+          "stageType": "Cutting",
+          "actualQty": 500,
+          "efficiencyPercent": 70
+        }
+      ],
+      "id": "x-xcoYK5eUE"
+    }
+  ],
   "inventory": [],
   "shipments": [],
   "reports": [],
+  "stages": [
+    {
+      "productionId": "x-xcoYK5eUE",
+      "stageType": "Cutting",
+      "plannedQty": 500,
+      "actualQty": 80,
+      "efficiencyPercent": 0,
+      "status": "Pending",
+      "orderId": "305",
+      "id": "-Zgxzj_9bH8"
+    },
+    {
+      "productionId": "x-xcoYK5eUE",
+      "stageType": "Sewing",
+      "plannedQty": 10000,
+      "actualQty": 10,
+      "efficiencyPercent": 0,
+      "status": "Pending",
+      "orderId": "303",
+      "id": "J1qbMdIjTjc"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -1,168 +1,132 @@
-<div class="card shadow-sm border-0">
+<div class="container mt-3">
 
-  <div class="card-header bg-primary text-white">
+  <h3 class="mb-3">Production Tracking</h3>
 
-    <h5 class="mb-0">
-      Production Stages
-    </h5>
+  <!-- ORDER + LINE -->
+  <div class="card p-3 mb-3">
 
-  </div>
-
-  <div class="card-body">
-
-    <!-- FORM -->
     <div class="row">
 
-      <div class="col-md-4 mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Select Order</label>
+        <select class="form-select"
+                [(ngModel)]="selectedOrderId"
+                (change)="onOrderChange()">
 
-        <label class="form-label fw-semibold">
-          Stage Type
-        </label>
+          <option value="">-- Select Order --</option>
 
-        <select
-          class="form-select"
-          [(ngModel)]="stage.stageType">
+          <option *ngFor="let o of completedOrders"
+                  [value]="o.poNumber">
 
-          <option value="">
-            Select Stage
+            {{ o.poNumber }}
+
           </option>
+        </select>
+      </div>
 
-          <option value="Cutting">
-            Cutting
-          </option>
+      <div class="col-md-6">
+        <label class="form-label">Production Line</label>
+        <select class="form-select"
+                [(ngModel)]="production.lineName">
 
-          <option value="Sewing">
-            Sewing
-          </option>
-
-          <option value="Finishing">
-            Finishing
+          <option *ngFor="let l of lines" [value]="l">
+            {{ l }}
           </option>
 
         </select>
-
-      </div>
-
-      <div class="col-md-4 mb-3">
-
-        <label class="form-label fw-semibold">
-          Actual Quantity
-        </label>
-
-        <input
-          type="number"
-          class="form-control"
-          [(ngModel)]="stage.actualQty">
-
-      </div>
-
-      <div class="col-md-4 mb-3">
-
-        <label class="form-label fw-semibold">
-          Efficiency %
-        </label>
-
-        <input
-          type="number"
-          class="form-control"
-          [(ngModel)]="stage.efficiencyPercent">
-
       </div>
 
     </div>
 
-    <button
-      class="btn btn-primary"
-      (click)="addStage()">
+  </div>
 
-      + Add Stage
+  <!-- STAGES TABLE -->
+  <div class="card p-3 mb-3">
 
-    </button>
+    <h5>Stages</h5>
 
-    <!-- TABLE -->
-    <div class="table-responsive mt-4">
+    <table class="table table-striped table-bordered">
 
-      <table class="table table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Order ID</th>
+          <th>Stage</th>
+          <th>Planned Qty</th>
+          <th>Actual Qty</th>
+          <th>Efficiency</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
 
-        <thead class="table-primary">
+      <tbody>
 
-          <tr>
+        <tr *ngFor="let s of stages">
 
-            <th>#</th>
-            <th>Stage</th>
-            <th>Quantity</th>
-            <th>Efficiency</th>
-            <th class="text-center">Action</th>
+          <td>{{ s.orderId }}</td>
+          <td>{{ s.stageType }}</td>
+          <td>{{ s.plannedQty }}</td>
+          <td>{{ s.actualQty }}</td>
+          <td>{{ s.efficiencyPercent }}%</td>
 
-          </tr>
+          <td>
+            <span class="badge bg-primary">
+              {{ s.status }}
+            </span>
+          </td>
 
-        </thead>
+          <td>
+            <button class="btn btn-sm btn-success"
+                    (click)="updateStage(s)">
+              Update
+            </button>
+          </td>
 
-        <tbody>
+        </tr>
 
-          <tr *ngFor="let item of stages; let i = index">
+      </tbody>
 
-            <td>{{ i + 1 }}</td>
+    </table>
 
-            <td>{{ item.stageType }}</td>
+  </div>
 
-            <td>{{ item.actualQty }}</td>
+  <!-- ADD STAGE -->
+  <div class="card p-3">
 
-            <td>
+    <h5>Add Stage</h5>
 
-              <span class="badge bg-success">
+    <div class="row g-2">
 
-                {{ item.efficiencyPercent }}%
+      <div class="col-md-3">
+        <select class="form-select"
+                [(ngModel)]="stageForm.stageType">
 
-              </span>
+          <option>Cutting</option>
+          <option>Sewing</option>
+          <option>Finishing</option>
 
-            </td>
-
-            <td class="text-center">
-
-              <button
-                class="btn btn-danger btn-sm"
-                (click)="removeStage(i)">
-
-                Delete
-
-              </button>
-
-            </td>
-
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-    <!-- SUMMARY -->
-    <div class="row mt-4">
-
-      <div class="col-md-6">
-
-        <div class="alert alert-primary">
-
-          <strong>Total Quantity:</strong>
-
-          {{ getTotalQty() }}
-
-        </div>
-
+        </select>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-3">
+        <input class="form-control"
+               type="number"
+               placeholder="Planned Qty"
+               [(ngModel)]="stageForm.plannedQty">
+      </div>
 
-        <div class="alert alert-success">
+      <div class="col-md-3">
+        <input class="form-control"
+               type="number"
+               placeholder="Actual Qty"
+               [(ngModel)]="stageForm.actualQty">
+      </div>
 
-          <strong>Average Efficiency:</strong>
-
-          {{ getAverageEfficiency() | number:'1.0-2' }}%
-
-        </div>
-
+      <div class="col-md-3">
+        <button class="btn btn-primary w-100"
+                (click)="addStage()">
+          Add Stage
+        </button>
       </div>
 
     </div>

@@ -27,6 +27,9 @@ export interface Order {
   unitPrice: number;
   shipmentDate: string;
   status: string;
+
+  buyerName?: string;
+  styleName?: string;
 }
 
 
@@ -40,24 +43,59 @@ export interface Bom {
   uom: string;
 }
 
+// export interface Production {
+//   id?: string;
+//   orderId: string;
+//   styleId: string;
+//   lineName: string;
+//   plannedStart: Date
+//   completedEnd: Date;
+//   stages: ProductionStage[];
+
+// }
+
 export interface Production {
   id?: string;
   orderId: string;
   styleId: string;
   lineName: string;
-  plannedStart: Date
-  completedEnd: Date;
-  stages:ProductionStage[];
-  
+  plannedStart: string;
+  completedEnd?: string;
+
+  stages: ProductionStage[];
 }
 
-export interface ProductionStage{
-id?:string;
-stageType:string; //Cutting, Sewing, Finishing
-actualQty:number;
-efficiencyPercent: number;
 
+export interface ProductionStage {
+  id?: string;
+  productionId: string;   // 👈 MUST ADD THIS
+  stageType: 'Cutting' | 'Sewing' | 'Finishing';
+
+  plannedQty: number;
+  actualQty: number;
+
+  efficiencyPercent: number;
+  status: 'Pending' | 'Running' | 'Completed';
+
+  startDate?: string;
+  endDate?: string;
+
+  orderId?: string;
 }
+
+
+
+
+
+
+
+// export interface ProductionStage {
+//   id?: string;
+//   stageType: string; //Cutting, Sewing, Finishing
+//   actualQty: number;
+//   efficiencyPercent: number;
+
+// }
 
 export interface Inventory {
   id: number;
@@ -78,19 +116,19 @@ export interface Shipment {
 }
 
 export interface User {
- 
-    id?: string;
 
-    name: string;
+  id?: string;
 
-    email: string;
+  name: string;
 
-    password: string;
+  email: string;
 
-    phone: string;
+  password: string;
 
-    image: string;
+  phone: string;
 
-    role: 'Admin' | 'Marchandiser' | 'Production_Manager' |  'QA_Officer' | 'StoreKepper' |  'User' | '';
+  image: string;
+
+  role: 'Admin' | 'Marchandiser' | 'Production_Manager' | 'QA_Officer' | 'StoreKepper' | 'User' | '';
 
 }

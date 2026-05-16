@@ -10,6 +10,8 @@ import { StyleComponent } from './feature/style/style';
 import { OrderComponent } from './feature/order-component/order-component';
 import { BomComponent } from './feature/bom-component/bom-component';
 import { ProductionDashboardComponent } from './feature/production/production-dashboard/production-dashboard';
+import { ProductionReportComponent } from './feature/production/production-report/production-report';
+import { ProductionStageComponent } from './feature/production/production-stage/production-stage';
 
 
 
@@ -100,6 +102,22 @@ export const routes: Routes = [
 
   },
 
+  {
+    path: 'pro-stage',
+
+    component: ProductionStageComponent,
+
+    canActivate: [authGuard],
+
+    data: {
+      roles: [
+        'Admin',
+        'Marchandiser'
+      ]
+    }
+
+  },
+
   // STYLES
   {
     path: 'styles',
@@ -157,6 +175,46 @@ export const routes: Routes = [
 
     component:
       ProductionDashboardComponent,
+      
+      
+
+    canActivate: [authGuard],
+
+    data: {
+      roles: [
+        'Admin',
+        'Production_Manager'
+      ]
+    }
+
+  },
+  // PRODUCTIONS
+  {
+    path: 'productions',
+
+    component:
+      ProductionReportComponent,
+      
+      
+
+    canActivate: [authGuard],
+
+    data: {
+      roles: [
+        'Admin',
+        'Production_Manager'
+      ]
+    }
+
+  },
+  // PRODUCTIONS
+  {
+    path: 'productions',
+
+    component:
+      ProductionStageComponent,
+      
+      
 
     canActivate: [authGuard],
 

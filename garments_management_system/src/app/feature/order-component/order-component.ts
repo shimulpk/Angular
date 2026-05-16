@@ -42,7 +42,7 @@ export class OrderComponent implements OnInit {
     private buyerService: BuyerService,
     private styleService: StyleService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
 
@@ -59,8 +59,26 @@ export class OrderComponent implements OnInit {
     this.orderService.getAllOrders().subscribe({
       next: (res: Order[]) => {
 
-        this.orders = res;
-        this.allOrders = res;
+        this.orders = res.map(order => {
+
+          const buyer = this.buyers.find(
+            b => b.id === order.buyerId
+          );
+
+          const style = this.styles.find(
+            s => s.id === order.styleId
+          );
+
+          return {
+            ...order,
+            buyerName: buyer?.companyName || '',
+            styleName: style?.styleCode || ''
+          };
+
+        });
+
+        this.allOrders = this.orders;
+
         this.cdr.detectChanges();
 
       },
@@ -86,14 +104,19 @@ export class OrderComponent implements OnInit {
   // GET STYLES
   getAllStyles(): void {
 
-    this.styleService.getAllStyles().subscribe({
-      next: (res: Style[]) => {
-        this.styles = res;
-        this.cdr.detectChanges();
-      }
-    });
+  this.styleService.getAllStyles().subscribe({
+    next: (res: Style[]) => {
 
-  }
+      this.styles = res;
+
+      // AFTER STYLES & BUYERS LOADED
+      this.getAllOrders();
+
+      this.cdr.detectChanges();
+    }
+  });
+
+}
 
   // SAVE OR UPDATE
   saveOrder(): void {

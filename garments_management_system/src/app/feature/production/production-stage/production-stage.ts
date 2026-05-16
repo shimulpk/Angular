@@ -1,15 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ProductionService } from '../../../core/services/production-service';
-import { Production } from '../production-dashboard/production-dashboard';
+import { forkJoin } from 'rxjs';
 
-export interface ProductionStage {
-  id?: string;
-  stageType: string;
-  actualQty: number;
-  efficiencyPercent: number;
-}
+import { ProductionService } from '../../../core/services/production-service';
+import { ProductionStageService } from '../../../core/services/productionStage-service';
+import { OrderService } from '../../../core/services/order-service';
+
+import { Order, Production, ProductionStage } from '../../../shared/model';
 
 @Component({
   selector: 'app-production-stage',
@@ -18,114 +16,141 @@ export interface ProductionStage {
   templateUrl: './production-stage.html',
   styleUrl: './production-stage.css',
 })
-export class ProductionStageComponent {
-  // প্রোডাকশন সার্ভিস ইনজেক্ট করুন
-constructor(private productionService: ProductionService) {}
+export class ProductionStageComponent implements OnInit {
 
-  @Input() stages: ProductionStage[] = [];
+  production!: Production;
+  stages: ProductionStage[] = [];
 
-  @Output() stagesChange =
-    new EventEmitter<ProductionStage[]>();
+  productionId: string = 'x-xcoYK5eUE';
 
-  stage: ProductionStage = {
-    stageType: '',
+  selectedOrderId: string = '';
+
+  completedOrders: Order[] = [];
+
+  lines: string[] = [
+    'Line-A',
+    'Line-B',
+    'Line-C',
+    'Line-D',
+    'Line-E'
+  ];
+
+  stageForm: ProductionStage = {
+    productionId: '',
+    stageType: 'Cutting',
+    plannedQty: 0,
     actualQty: 0,
-    efficiencyPercent: 0
+    efficiencyPercent: 0,
+    status: 'Pending',
+    orderId: ''
   };
 
-  // // ADD STAGE
-  // addStage(): void {
+  constructor(
+    private productionService: ProductionService,
+    private stageService: ProductionStageService,
+    private orderService: OrderService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
-  //   if (
-  //     this.stage.stageType &&
-  //     this.stage.actualQty > 0
-  //   ) {
+  ngOnInit(): void {
+    this.loadProductionData();
+    this.loadCompletedOrders();
+  }
 
-  //     this.stages.push({
-  //       ...this.stage
-  //     });
+  // 🔥 LOAD PRODUCTION + STAGES
+  loadProductionData(): void {
 
-  //     this.stagesChange.emit(this.stages);
-
-  //     this.resetStage();
-
-  //   }
-
-  // }
-
-  addStage(): void {
-  if (this.stage.stageType && this.stage.actualQty > 0) {
-    
-    // ১. একটি অবজেক্ট তৈরি করুন যা db.json এ যাবে
-    const newProductionEntry: Production = {
-      orderId: "ORD-101", 
-      styleId: "STL-202",
-      lineName: "Line-A",
-      plannedStart: new Date(),
-      completedEnd: new Date(),
-      stages: [{ ...this.stage }] // বর্তমান স্টেজটি অ্যারেতে ভরে দিন
-    };
-
-    // ২. সার্ভিস ব্যবহার করে ডাটাবেসে সেভ করুন
-    this.productionService.addProduction(newProductionEntry).subscribe({
+    forkJoin({
+      production: this.productionService.getById(this.productionId),
+      stages: this.stageService.getByProductionId(this.productionId)
+    }).subscribe({
       next: (res) => {
-        alert('Data saved to db.json successfully!');
-        this.resetStage();
-        // ৩. আপনি যদি ওই পেজেই টেবিল দেখান তবে ডাটা রিফ্রেশ করুন
-        this.stages.push(res.stages[0]); 
+
+        this.production = res.production;
+        this.stages = res.stages;
+
+        this.selectedOrderId = this.production.orderId;
+
+        this.cdr.detectChanges();
       },
-      error: (err) => alert('Error: JSON Server is not running!')
+      error: (err) => console.log(err)
     });
-  }
-}
-
-  // REMOVE STAGE
-  removeStage(index: number): void {
-
-    this.stages.splice(index, 1);
-
-    this.stagesChange.emit(this.stages);
 
   }
 
-  // RESET
-  resetStage(): void {
+  // 📦 LOAD COMPLETED ORDERS
+  loadCompletedOrders(): void {
 
-    this.stage = {
-      stageType: '',
+    this.orderService.getOrdersByStatus('Completed')
+      .subscribe({
+        next: (res) => {
+          this.completedOrders = res;
+        },
+        error: (err) => console.log(err)
+      });
+
+  }
+
+  // 🔄 ORDER CHANGE (ONLY UI UPDATE)
+  onOrderChange(): void {
+
+    if (!this.production) return;
+
+    this.production.orderId = this.selectedOrderId;
+
+    this.cdr.detectChanges();
+
+  }
+
+  // ➕ ADD STAGE
+  addStage(): void {
+
+    this.stageForm.productionId = this.productionId;
+    this.stageForm.orderId = this.selectedOrderId;
+
+    this.stageService.addStage(this.stageForm)
+      .subscribe({
+        next: () => {
+
+          alert('Stage Added Successfully');
+
+          this.resetStageForm();
+          this.loadProductionData();
+
+        },
+        error: (err) => console.log(err)
+      });
+
+  }
+
+  // ✏️ UPDATE STAGE
+  updateStage(stage: ProductionStage): void {
+
+    this.stageService.updateStage(stage.id!, stage)
+      .subscribe({
+        next: () => {
+
+          alert('Stage Updated');
+
+          this.loadProductionData();
+
+        },
+        error: (err) => console.log(err)
+      });
+
+  }
+
+  // 🔄 RESET
+  resetStageForm(): void {
+
+    this.stageForm = {
+      productionId: '',
+      stageType: 'Cutting',
+      plannedQty: 0,
       actualQty: 0,
-      efficiencyPercent: 0
+      efficiencyPercent: 0,
+      status: 'Pending'
     };
 
   }
-
-  // TOTAL QTY
-  getTotalQty(): number {
-
-    return this.stages.reduce(
-      (sum, item) =>
-        sum + Number(item.actualQty),
-      0
-    );
-
-  }
-
-  // AVERAGE EFFICIENCY
-  getAverageEfficiency(): number {
-
-    if (this.stages.length === 0) {
-      return 0;
-    }
-
-    const total =
-      this.stages.reduce(
-        (sum, item) =>
-          sum + Number(item.efficiencyPercent),
-        0
-      );
-
-    return total / this.stages.length;
-
-  }
-
 }
