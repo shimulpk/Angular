@@ -1,0 +1,32 @@
+.card{
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.card-header{
+  padding: 16px 20px;
+}
+
+.table{
+  margin-bottom: 0;
+}
+
+.table td,
+.table th{
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.table-hover tbody tr:hover{
+  background: #f8f9fa;
+}
+
+.badge{
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+.text-primary{
+  font-weight: 600;
+}

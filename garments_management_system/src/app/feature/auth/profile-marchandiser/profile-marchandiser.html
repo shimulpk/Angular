@@ -1,0 +1,113 @@
+<!-- profile-marchandiser.html -->
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+      <div class="card shadow-lg border-0">
+
+        <!-- HEADER -->
+        <div
+          class="card-header bg-primary text-white text-center">
+
+          <h3 class="mb-0">
+
+            Marchandiser Profile
+
+          </h3>
+
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body p-4">
+
+          <div class="text-center">
+
+            <!-- IMAGE -->
+            <img
+              [src]="
+                loggedUser?.image ||
+                'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+              "
+              class="profile-img mb-3"
+              alt="User">
+
+            <!-- NAME -->
+            <h3 class="fw-bold">
+
+              {{ loggedUser?.name }}
+
+            </h3>
+
+            <!-- ROLE -->
+            <span class="badge bg-success mb-4">
+
+              {{ loggedUser?.role }}
+
+            </span>
+
+          </div>
+
+          <hr>
+
+          <!-- DETAILS -->
+          <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+              <label class="fw-bold">
+
+                Email
+
+              </label>
+
+              <p>
+
+                {{ loggedUser?.email }}
+
+              </p>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+              <label class="fw-bold">
+
+                Phone
+
+              </label>
+
+              <p>
+
+                {{ loggedUser?.phone }}
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="text-center mt-4">
+
+            <button
+              class="btn btn-danger px-4"
+              (click)="logout()">
+
+              Logout
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

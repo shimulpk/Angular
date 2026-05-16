@@ -1,0 +1,41 @@
+.card{
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.card-header{
+  padding: 16px 20px;
+}
+
+.table td,
+.table th{
+  vertical-align: middle;
+}
+
+.form-control,
+.form-select{
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+}
+
+.form-control:focus,
+.form-select:focus{
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+.btn{
+  border-radius: 8px;
+  padding: 8px 18px;
+}
+
+.badge{
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.alert{
+  border-radius: 10px;
+  margin-bottom: 0;
+}

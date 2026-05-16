@@ -1,0 +1,164 @@
+{
+  "users": [
+    {
+      "name": "Md Shimul Pramanik",
+      "email": "shimulpk61100@gmail.com",
+      "password": "12345",
+      "phone": "01568186408",
+      "image": "",
+      "role": "Admin",
+      "id": "LdFjw8F-DmU"
+    },
+    {
+      "name": "Badrul Amin",
+      "email": "b@gmail.com",
+      "password": "12345",
+      "phone": "097212478",
+      "image": "",
+      "role": "Marchandiser",
+      "id": "3EAS1t3-aAU"
+    },
+    {
+      "name": "Abul Hasan",
+      "email": "a@gmail.com",
+      "password": "12345",
+      "phone": "01568186408",
+      "image": "",
+      "role": "Production_Manager",
+      "id": "BnUUWsd-Cic"
+    }
+  ],
+  "buyers": [
+    {
+      "buyerCode": "101",
+      "companyName": "Nacano International Company",
+      "country": "Japan",
+      "currency": "Japanese Yen",
+      "paymentTerm": "LC",
+      "status": true,
+      "id": "xZ-iF_uqxPU"
+    },
+    {
+      "buyerCode": "102",
+      "companyName": "Vintage Denim Studio Ltd",
+      "country": "Japan",
+      "currency": "Japanese Yen",
+      "paymentTerm": "LC",
+      "status": true,
+      "id": "RJU-VkbUOos"
+    },
+    {
+      "buyerCode": "103",
+      "companyName": "Sonia Swetters ltd",
+      "country": "Bangladesh",
+      "currency": "Taka",
+      "paymentTerm": "NET30",
+      "status": true,
+      "id": "Pb2D-bLkQ38"
+    },
+    {
+      "buyerCode": "104",
+      "companyName": "oskar bangla",
+      "country": "china",
+      "currency": "yen",
+      "paymentTerm": "LC",
+      "status": true,
+      "id": "VTJP9KHbZe4"
+    }
+  ],
+  "styles": [
+    {
+      "styleCode": "201",
+      "buyerId": 1,
+      "garmentType": "Denim",
+      "gender": "Unisex",
+      "season": "Summer",
+      "sampleApproved": true,
+      "id": "i2rIhGx9SMk"
+    },
+    {
+      "styleCode": "202",
+      "buyerId": 2,
+      "garmentType": "Oven garments",
+      "gender": "Unisex",
+      "season": "Festive",
+      "sampleApproved": false,
+      "id": "Bt_oee3U3r0"
+    },
+    {
+      "styleCode": "203",
+      "buyerId": 3,
+      "garmentType": "Outerware",
+      "gender": "Unisex",
+      "season": "Winter",
+      "sampleApproved": true,
+      "id": "_gOi9cMf8FE"
+    }
+  ],
+  "orders": [
+    {
+      "poNumber": "301",
+      "buyerId": "xZ-iF_uqxPU",
+      "styleId": "i2rIhGx9SMk",
+      "quantity": 1000,
+      "unitPrice": 2200,
+      "shipmentDate": "2026-05-28",
+      "status": "Running",
+      "id": "9HkEZgevjB4"
+    },
+    {
+      "poNumber": "302",
+      "buyerId": "RJU-VkbUOos",
+      "styleId": "Bt_oee3U3r0",
+      "quantity": 15000,
+      "unitPrice": 1800,
+      "shipmentDate": "2026-06-24",
+      "status": "Pending",
+      "id": "_LVIK-hdwLo"
+    },
+    {
+      "poNumber": "303",
+      "buyerId": "Pb2D-bLkQ38",
+      "styleId": "_gOi9cMf8FE",
+      "quantity": 500,
+      "unitPrice": 5000,
+      "shipmentDate": "2026-05-21",
+      "status": "Completed",
+      "id": "RX3iqDD1EWg"
+    }
+  ],
+  "bom": [
+    {
+      "id": "PJBPUdC2r5k",
+      "styleId": "i2rIhGx9SMk",
+      "materialName": "Fabric",
+      "category": "Fabric",
+      "consumption": 1.8,
+      "wastage": 5,
+      "uom": "Meter"
+    },
+    {
+      "id": "0FeCiOJPsR0",
+      "styleId": "Bt_oee3U3r0",
+      "materialName": "Fabric",
+      "category": "Fabric",
+      "consumption": 2,
+      "wastage": 4,
+      "uom": "Meter"
+    },
+    {
+      "id": "2tiKW8BR_TU",
+      "styleId": "_gOi9cMf8FE",
+      "materialName": "Zipper",
+      "category": "Accessories",
+      "consumption": 1200,
+      "wastage": 50,
+      "uom": "Piece"
+    }
+  ],
+  "productions": [],
+  "inventory": [],
+  "shipments": [],
+  "reports": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

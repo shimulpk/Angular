@@ -1,0 +1,111 @@
+<div class="card border-0 shadow-sm">
+
+  <div class="card-header bg-primary text-white">
+
+    <h5 class="mb-0">
+      Production Report
+    </h5>
+
+  </div>
+
+  <div class="card-body">
+
+    <div class="table-responsive">
+
+      <table class="table table-hover align-middle">
+
+        <thead class="table-primary">
+
+          <tr>
+
+            <th>#</th>
+            <th>Line</th>
+            <th>Order</th>
+            <th>Style</th>
+            <th>Planned Start</th>
+            <th>Completed End</th>
+            <th>Total Qty</th>
+            <th>Avg Efficiency</th>
+            <th>Status</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let item of productions;
+              let i = index
+            ">
+
+            <td>{{ i + 1 }}</td>
+
+            <td class="fw-semibold text-primary">
+
+              {{ item.lineName }}
+
+            </td>
+
+            <td>{{ item.orderId }}</td>
+
+            <td>{{ item.styleId }}</td>
+
+            <td>
+
+              {{ item.plannedStart | date }}
+
+            </td>
+
+            <td>
+
+              {{ item.completedEnd | date }}
+
+            </td>
+
+            <td>
+
+              {{ getTotalProduction(item.stages) }}
+
+            </td>
+
+            <td>
+
+              {{
+                getAverageEfficiency(item.stages)
+                | number:'1.0-2'
+              }}%
+
+            </td>
+
+            <td>
+
+              <span
+                class="badge"
+                [ngClass]="
+                  getProductionStatus(item)
+                  === 'Completed'
+                  ? 'bg-success'
+                  : 'bg-warning'
+                ">
+
+                {{
+                  getProductionStatus(item)
+                }}
+
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

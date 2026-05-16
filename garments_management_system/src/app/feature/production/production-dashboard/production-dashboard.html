@@ -1,0 +1,95 @@
+<div class="row">
+
+  <!-- TOTAL PRODUCTION -->
+  <div class="col-md-3 mb-4">
+
+    <div class="card border-0 shadow-sm">
+
+      <div class="card-body">
+
+        <h6 class="text-muted">
+          Total Production
+        </h6>
+
+        <h2 class="fw-bold text-primary">
+
+          {{ totalProductionQty }}
+
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- AVERAGE EFFICIENCY -->
+  <div class="col-md-3 mb-4">
+
+    <div class="card border-0 shadow-sm">
+
+      <div class="card-body">
+
+        <h6 class="text-muted">
+          Avg Efficiency
+        </h6>
+
+        <h2 class="fw-bold text-success">
+
+          {{ averageEfficiency | number:'1.0-2' }}%
+
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TOTAL LINES -->
+  <div class="col-md-3 mb-4">
+
+    <div class="card border-0 shadow-sm">
+
+      <div class="card-body">
+
+        <h6 class="text-muted">
+          Production Lines
+        </h6>
+
+        <h2 class="fw-bold text-warning">
+
+          {{ totalLines }}
+
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TOTAL STAGES -->
+  <div class="col-md-3 mb-4">
+
+    <div class="card border-0 shadow-sm">
+
+      <div class="card-body">
+
+        <h6 class="text-muted">
+          Total Stages
+        </h6>
+
+        <h2 class="fw-bold text-danger">
+
+          {{ totalStages }}
+
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

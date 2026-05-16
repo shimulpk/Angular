@@ -1,0 +1,172 @@
+<div class="card shadow-sm border-0">
+
+  <div class="card-header bg-primary text-white">
+
+    <h5 class="mb-0">
+      Production Stages
+    </h5>
+
+  </div>
+
+  <div class="card-body">
+
+    <!-- FORM -->
+    <div class="row">
+
+      <div class="col-md-4 mb-3">
+
+        <label class="form-label fw-semibold">
+          Stage Type
+        </label>
+
+        <select
+          class="form-select"
+          [(ngModel)]="stage.stageType">
+
+          <option value="">
+            Select Stage
+          </option>
+
+          <option value="Cutting">
+            Cutting
+          </option>
+
+          <option value="Sewing">
+            Sewing
+          </option>
+
+          <option value="Finishing">
+            Finishing
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="col-md-4 mb-3">
+
+        <label class="form-label fw-semibold">
+          Actual Quantity
+        </label>
+
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="stage.actualQty">
+
+      </div>
+
+      <div class="col-md-4 mb-3">
+
+        <label class="form-label fw-semibold">
+          Efficiency %
+        </label>
+
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="stage.efficiencyPercent">
+
+      </div>
+
+    </div>
+
+    <button
+      class="btn btn-primary"
+      (click)="addStage()">
+
+      + Add Stage
+
+    </button>
+
+    <!-- TABLE -->
+    <div class="table-responsive mt-4">
+
+      <table class="table table-hover align-middle">
+
+        <thead class="table-primary">
+
+          <tr>
+
+            <th>#</th>
+            <th>Stage</th>
+            <th>Quantity</th>
+            <th>Efficiency</th>
+            <th class="text-center">Action</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let item of stages; let i = index">
+
+            <td>{{ i + 1 }}</td>
+
+            <td>{{ item.stageType }}</td>
+
+            <td>{{ item.actualQty }}</td>
+
+            <td>
+
+              <span class="badge bg-success">
+
+                {{ item.efficiencyPercent }}%
+
+              </span>
+
+            </td>
+
+            <td class="text-center">
+
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="removeStage(i)">
+
+                Delete
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="row mt-4">
+
+      <div class="col-md-6">
+
+        <div class="alert alert-primary">
+
+          <strong>Total Quantity:</strong>
+
+          {{ getTotalQty() }}
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="alert alert-success">
+
+          <strong>Average Efficiency:</strong>
+
+          {{ getAverageEfficiency() | number:'1.0-2' }}%
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

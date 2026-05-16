@@ -1,0 +1,106 @@
+<!-- login-component.html -->
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-5">
+
+      <div class="card shadow-lg border-0">
+
+        <!-- HEADER -->
+        <div
+          class="card-header bg-dark text-white text-center">
+
+          <h3 class="mb-0">
+
+            User Login
+
+          </h3>
+
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body p-4">
+
+          <!-- SUCCESS -->
+          <div
+            *ngIf="successMessage"
+            class="alert alert-success">
+
+            {{ successMessage }}
+
+          </div>
+
+          <!-- ERROR -->
+          <div
+            *ngIf="errorMessage"
+            class="alert alert-danger">
+
+            {{ errorMessage }}
+
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mb-3">
+
+            <label class="form-label">
+
+              Email
+
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter Email"
+              [(ngModel)]="loginData.email">
+
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="mb-4">
+
+            <label class="form-label">
+
+              Password
+
+            </label>
+
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Enter Password"
+              [(ngModel)]="loginData.password">
+
+          </div>
+
+          <!-- BUTTON -->
+          <button
+            class="btn btn-primary w-100"
+            (click)="onLogin()"
+            [disabled]="isLoading">
+
+            <span *ngIf="!isLoading">
+
+              Login
+
+            </span>
+
+            <span *ngIf="isLoading">
+
+              Logging In...
+
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

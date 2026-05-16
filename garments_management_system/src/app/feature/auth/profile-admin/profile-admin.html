@@ -1,0 +1,79 @@
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <div class="card shadow border-0">
+
+        <div
+          class="card-header bg-dark text-white text-center">
+
+          <h3>
+
+            Admin Profile
+
+          </h3>
+
+        </div>
+
+        <div class="card-body text-center">
+
+          <!-- IMAGE -->
+          <img
+            [src]="loggedUser?.image"
+            width="120"
+            height="120"
+            class="rounded-circle shadow mb-4"
+            alt="User Image">
+
+          <!-- NAME -->
+          <h4>
+
+            {{ loggedUser?.name }}
+
+          </h4>
+
+          <!-- EMAIL -->
+          <p class="text-muted">
+
+            {{ loggedUser?.email }}
+
+          </p>
+
+          <!-- PHONE -->
+          <p>
+
+            <strong>Phone:</strong>
+
+            {{ loggedUser?.phone }}
+
+          </p>
+
+          <!-- ROLE -->
+          <span class="badge bg-primary mb-4">
+
+            {{ loggedUser?.role }}
+
+          </span>
+
+          <br>
+
+          <!-- LOGOUT -->
+          <button
+            class="btn btn-danger"
+            (click)="logout()">
+
+            Logout
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

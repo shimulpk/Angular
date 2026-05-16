@@ -1,0 +1,27 @@
+.card{
+  border-radius: 14px;
+}
+
+.table td,
+.table th{
+  vertical-align: middle;
+}
+
+.form-control,
+.form-select{
+  height: 45px;
+  border-radius: 8px;
+}
+
+.btn{
+  border-radius: 8px;
+}
+
+.modal-content{
+  border-radius: 14px;
+}
+
+.badge{
+  padding: 8px 12px;
+  font-size: 12px;
+}

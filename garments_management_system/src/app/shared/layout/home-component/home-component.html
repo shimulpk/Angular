@@ -1,0 +1,261 @@
+<!-- home.html -->
+
+<div class="container-fluid p-0">
+
+<!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
+    <div class="container">
+
+      <a class="navbar-brand fw-bold fs-3">
+        Garments ERP
+      </a>
+
+      <div class="text-white fw-semibold">
+
+        {{ currentTime | date:'medium' }}
+
+      </div>
+
+    </div>
+
+  </nav>
+  
+
+  <!-- HERO -->
+  <section class="hero-section">
+
+    <div class="overlay"></div>
+
+    <div class="container position-relative z-1">
+
+      <div class="row align-items-center min-vh-100">
+
+        <div class="col-lg-6 text-white">
+
+          <h1 class="display-3 fw-bold mb-4">
+
+            Smart Garments
+            Management System
+
+          </h1>
+
+          <p class="lead mb-4">
+
+            Complete ERP solution for
+            production, buyers, orders,
+            inventory and quality assurance.
+
+          </p>
+
+          <button class="btn btn-warning btn-lg px-4 me-3">
+
+            Explore System
+
+          </button>
+
+          <button class="btn btn-outline-light btn-lg px-4">
+
+            View Reports
+
+          </button>
+
+        </div>
+
+        <!-- DYNAMIC FACTORY IMAGES -->
+        <div class="col-lg-6">
+
+          <div class="row g-3">
+
+            <div
+              class="col-6"
+              *ngFor="let item of factoryImages">
+
+              <img
+                [src]="item.image"
+                class="factory-img shadow"
+                alt="Factory">
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="py-5 bg-light">
+
+    <div class="container">
+
+      <div class="row g-4">
+
+        <div
+          class="col-md-3"
+          *ngFor="let item of dashboardCards">
+
+          <div
+            class="dashboard-card shadow-sm"
+            [ngClass]="'bg-' + item.color">
+
+            <div class="d-flex justify-content-between">
+
+              <div>
+
+                <h6>
+
+                  {{ item.title }}
+
+                </h6>
+
+                <h2 class="fw-bold">
+
+                  {{ item.value }}
+
+                </h2>
+
+              </div>
+
+              <i class="bi {{ item.icon }}"></i>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-5">
+
+    <div class="container">
+
+      <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+          ERP Features
+        </h2>
+
+        <p class="text-muted">
+          Powerful modules for garments factory management
+        </p>
+
+      </div>
+
+      <div class="row g-4">
+
+        <div
+          class="col-md-3"
+          *ngFor="let item of features">
+
+          <div class="feature-card shadow-sm">
+
+            <div
+              class="icon"
+              [ngClass]="'bg-' + item.color">
+
+              <i class="bi {{ item.icon }}"></i>
+
+            </div>
+
+            <h4 class="fw-bold mt-4">
+
+              {{ item.title }}
+
+            </h4>
+
+            <p class="text-muted">
+
+              {{ item.description }}
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- RECENT ACTIVITIES -->
+  <section class="py-5 bg-light">
+
+    <div class="container">
+
+      <div class="row">
+
+        <!-- ACTIVITIES -->
+        <div class="col-lg-6 mb-4">
+
+          <div class="card border-0 shadow-sm">
+
+            <div class="card-header bg-primary text-white">
+
+              Recent Activities
+
+            </div>
+
+            <div class="card-body">
+
+              <div
+                class="activity-item"
+                *ngFor="let item of recentActivities">
+
+                <div>
+
+                  <h6 class="mb-1 fw-bold">
+
+                    {{ item.title }}
+
+                  </h6>
+
+                  <small class="text-muted">
+
+                    {{ item.time }}
+
+                  </small>
+
+                </div>
+
+                <i class="bi bi-check-circle-fill text-success"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- FACTORY IMAGE -->
+        <div class="col-lg-6">
+
+          <img
+            src="https://images.unsplash.com/photo-1521791136064-7986c2920216"
+            class="main-factory-img shadow"
+            alt="Factory">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  
+
+</div>

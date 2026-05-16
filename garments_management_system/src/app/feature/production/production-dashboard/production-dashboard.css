@@ -1,0 +1,22 @@
+.card{
+  border-radius: 14px;
+  transition: 0.3s;
+}
+
+.card:hover{
+  transform: translateY(-4px);
+}
+
+.card-body{
+  padding: 24px;
+}
+
+h2{
+  margin-top: 10px;
+  font-size: 32px;
+}
+
+.text-muted{
+  font-size: 14px;
+  font-weight: 500;
+}

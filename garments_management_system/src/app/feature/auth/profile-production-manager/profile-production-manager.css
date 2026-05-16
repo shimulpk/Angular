@@ -1,0 +1,54 @@
+/* profile-production-manager.css */
+
+.card{
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card-header{
+  padding: 22px;
+}
+
+.profile-img{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #dc3545;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.badge{
+  font-size: 15px;
+  padding: 8px 14px;
+}
+
+.info-box{
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.info-box:hover{
+  transform: translateY(-5px);
+}
+
+.info-box h4{
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.info-box p{
+  margin: 0;
+}
+
+.btn{
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 24px;
+}
+
+hr{
+  margin: 30px 0;
+}

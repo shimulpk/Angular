@@ -1,0 +1,195 @@
+<!-- registration-component.html -->
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+      <div class="card shadow-lg border-0">
+
+        <div
+          class="card-header bg-primary text-white text-center">
+
+          <h3 class="mb-0">
+
+            User Registration
+
+          </h3>
+
+        </div>
+
+        <div class="card-body p-4">
+
+          <!-- SUCCESS -->
+          <div
+            *ngIf="successMessage"
+            class="alert alert-success">
+
+            {{ successMessage }}
+
+          </div>
+
+          <!-- ERROR -->
+          <div
+            *ngIf="errorMessage"
+            class="alert alert-danger">
+
+            {{ errorMessage }}
+
+          </div>
+
+          <!-- NAME -->
+          <div class="mb-3">
+
+            <label class="form-label">
+
+              Full Name
+
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.name">
+
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mb-3">
+
+            <label class="form-label">
+
+              Email
+
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              [(ngModel)]="user.email">
+
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="mb-3">
+
+            <label class="form-label">
+
+              Password
+
+            </label>
+
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="user.password">
+
+          </div>
+
+          <!-- PHONE -->
+          <div class="mb-3">
+
+            <label class="form-label">
+
+              Phone
+
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.phone">
+
+          </div>
+
+          <!-- IMAGE -->
+          <div class="mb-3">
+
+            <label class="form-label">
+
+              Image URL
+
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.image">
+
+          </div>
+
+          <!-- ROLE -->
+          <div class="mb-4">
+
+            <label class="form-label">
+
+              Role
+
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="user.role">
+
+              <option value="">
+                Select Role
+              </option>
+
+              <option value="Admin">
+                Admin
+              </option>
+
+              <option value="Marchandiser">
+               Marchandiser
+              </option>
+
+              <option value="Production_Manager">
+                Production Manager
+              </option>
+
+              <option value="QA_Officer">
+               QA Officer
+              </option>
+
+              <option value="StoreKepper">
+               Store Officer
+              </option>
+
+              <option value="User">
+               User
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- BUTTON -->
+          <button
+            class="btn btn-primary w-100"
+            (click)="onRegister()"
+            [disabled]="isLoading">
+
+            <span *ngIf="!isLoading">
+
+              Register
+
+            </span>
+
+            <span *ngIf="isLoading">
+
+              Registering...
+
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

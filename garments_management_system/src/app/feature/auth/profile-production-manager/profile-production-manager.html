@@ -1,0 +1,152 @@
+<!-- profile-production-manager.html -->
+
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+      <div class="card shadow-lg border-0">
+
+        <!-- HEADER -->
+        <div
+          class="card-header bg-danger text-white text-center">
+
+          <h2 class="mb-0">
+
+            Production Manager Profile
+
+          </h2>
+
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body p-4">
+
+          <div class="row align-items-center">
+
+            <!-- IMAGE -->
+            <div class="col-md-4 text-center">
+
+              <img
+                [src]="
+                  loggedUser?.image ||
+                  'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
+                "
+                class="profile-img"
+                alt="Profile">
+
+            </div>
+
+            <!-- DETAILS -->
+            <div class="col-md-8">
+
+              <h3 class="fw-bold">
+
+                {{ loggedUser?.name }}
+
+              </h3>
+
+              <span class="badge bg-danger mb-3">
+
+                {{ loggedUser?.role }}
+
+              </span>
+
+              <p>
+
+                <strong>Email:</strong>
+
+                {{ loggedUser?.email }}
+
+              </p>
+
+              <p>
+
+                <strong>Phone:</strong>
+
+                {{ loggedUser?.phone }}
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <hr>
+
+          <!-- DASHBOARD INFO -->
+          <div class="row text-center mt-4">
+
+            <div class="col-md-4 mb-3">
+
+              <div class="info-box bg-primary">
+
+                <h4>
+                  12
+                </h4>
+
+                <p>
+                  Active Production Lines
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+              <div class="info-box bg-success">
+
+                <h4>
+                  96%
+                </h4>
+
+                <p>
+                  Efficiency Rate
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+              <div class="info-box bg-warning">
+
+                <h4>
+                  8500
+                </h4>
+
+                <p>
+                  Daily Production Qty
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- BUTTON -->
+          <div class="text-center mt-4">
+
+            <button
+              class="btn btn-danger px-4"
+              (click)="logout()">
+
+              Logout
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
